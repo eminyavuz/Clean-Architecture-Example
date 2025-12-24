@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
-    // This class is our main entity inner model. this class must be independed from  Framework.
+    // This class is our main entity inner model. this class must be independent of Framework.
     private int id;
     private final LocalDateTime createdDate;
     private BigDecimal totalPrice;
