@@ -11,7 +11,6 @@ public class Order {
     // This class is our main entity inner model. this class must be independent of Framework.
     private int id;
     private final LocalDateTime createdDate;
-    private BigDecimal totalPrice;
     private final List<OrderItem> orderItems ;
 
     private Status status;
@@ -20,7 +19,6 @@ public class Order {
     public Order() {
 
         this.createdDate = LocalDateTime.now();
-        this.totalPrice = BigDecimal.ZERO;
         this.orderItems = new ArrayList<>();
         this.status= Status.CREATED;
     }
@@ -50,13 +48,14 @@ public class Order {
         return id;
     }
 
-
     public LocalDateTime getCreatedDate() {
         return createdDate;
     }
 
     public BigDecimal getTotalPrice() {
-        return totalPrice;
+        return orderItems.stream()
+                .map(OrderItem::getTotalPrice)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     // with copyOf usage we isolate our data from other layers
