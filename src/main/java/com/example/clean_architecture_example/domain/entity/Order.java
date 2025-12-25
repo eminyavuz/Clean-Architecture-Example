@@ -12,7 +12,7 @@ public class Order {
     private int id;
     private final LocalDateTime createdDate;
     private BigDecimal totalPrice;
-    private final List<Product> products;
+    private final List<OrderItem> orderItems ;
 
     private Status status;
 
@@ -21,12 +21,12 @@ public class Order {
 
         this.createdDate = LocalDateTime.now();
         this.totalPrice = BigDecimal.ZERO;
-        this.products = new ArrayList<>();
+        this.orderItems = new ArrayList<>();
         this.status= Status.CREATED;
     }
 
     // Behaviors - we add behaviors to protect the entity from invalid operations
-     public void addProduct(Product product)
+     public void addProduct(Product product, int  quantity)
      {
          if (product== null){
              throw  new IllegalArgumentException("Product cannot be null");
@@ -35,8 +35,7 @@ public class Order {
              throw new IllegalStateException("Cannot add product to cancelled or shipped order ");
          }
 
-         products.add(product);
-         totalPrice = totalPrice.add(product.getPrice());
+        orderItems.add( new OrderItem(product,quantity));
      }
      public void startProgress(){
         if (status!=Status.CREATED)
@@ -60,8 +59,8 @@ public class Order {
         return totalPrice;
     }
 
-    // with this usage we isolate our data from outerworld
-    public List<Product> getProducts() {
-        return List.copyOf(products);
+    // with copyOf usage we isolate our data from other layers
+    public List<OrderItem> getOrderItems() {
+        return List.copyOf(orderItems);
     }
 }
