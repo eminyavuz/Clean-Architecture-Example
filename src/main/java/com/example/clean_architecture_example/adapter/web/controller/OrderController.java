@@ -1,0 +1,49 @@
+package com.example.clean_architecture_example.adapter.web.controller;
+
+import com.example.clean_architecture_example.adapter.web.dto.AddProductRequest;
+import com.example.clean_architecture_example.application.usecase.AddProductToOrderUseCase;
+import com.example.clean_architecture_example.application.usecase.CreateOrderUseCase;
+import com.example.clean_architecture_example.application.usecase.StartOrderProgressUseCase;
+import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/orders")
+public class OrderController {
+    private final CreateOrderUseCase createOrderUseCase;
+    private final AddProductToOrderUseCase addProductToOrderUseCase;
+    private final StartOrderProgressUseCase startOrderProgressUseCase;
+
+    public OrderController(CreateOrderUseCase createOrderUseCase, AddProductToOrderUseCase addProductToOrderUseCase, StartOrderProgressUseCase startOrderProgressUseCase) {
+        this.addProductToOrderUseCase = addProductToOrderUseCase;
+        this.startOrderProgressUseCase = startOrderProgressUseCase;
+        this.createOrderUseCase = createOrderUseCase;
+    }
+
+    @PostMapping
+    public ResponseEntity<Integer> createOrder() {
+        int orderId = createOrderUseCase.execute();
+        return ResponseEntity.ok(orderId);
+    }
+    @PostMapping("/{orderId}/items")
+    public ResponseEntity<Void> addProduct(
+            @PathVariable int orderId,
+            @Valid @RequestBody AddProductRequest request
+            )
+    {
+        addProductToOrderUseCase.execute(
+                orderId,
+                request.productId(),
+                request.quantity()
+        );
+        return  ResponseEntity.ok().build();
+    }
+    @PostMapping("/{orderId}/start")
+    public ResponseEntity<Void> startProgress(@PathVariable int orderId)
+    {
+        startOrderProgressUseCase.execute(orderId);
+        return  ResponseEntity.ok().build();
+    }
+
+}

@@ -5,6 +5,7 @@ import com.example.clean_architecture_example.domain.repository.OrderRepository;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class InMemoryOrderRepository implements OrderRepository {
     private  final Map<Integer,Order> storage= new HashMap<>();
@@ -14,7 +15,7 @@ public class InMemoryOrderRepository implements OrderRepository {
     }
 
     @Override
-    public Order findById(int id) {
-        return storage.get(id);
+    public Optional<Order> findById(int id) {
+        return Optional.ofNullable(storage.get(id));
     }
 }

@@ -2,16 +2,20 @@ package com.example.clean_architecture_example.application.usecase;
 import com.example.clean_architecture_example.domain.entity.Order;
 import com.example.clean_architecture_example.domain.entity.Product;
 import com.example.clean_architecture_example.domain.repository.OrderRepository;
+import com.example.clean_architecture_example.domain.repository.ProductRepository;
 
 public class AddProductToOrderUseCase {
     private final OrderRepository orderRepository;
-    public AddProductToOrderUseCase(OrderRepository orderRepository)
+    private final ProductRepository productRepository;
+    public AddProductToOrderUseCase(OrderRepository orderRepository,ProductRepository productRepository)
     {
         this.orderRepository= orderRepository;
+        this.productRepository=productRepository;
     }
-    public  void execute(int orderId, Product product,int quantity)
+    public  void execute(int orderId, int productId,int quantity)
     {
-        Order order= orderRepository.findById(orderId);
+        Order order= orderRepository.findById(orderId).orElseThrow(()->new IllegalArgumentException("Order Not Found"));
+        Product product=productRepository.findById(productId).orElseThrow(()->new IllegalArgumentException("Product Not Found"));
         order.addProduct(product,quantity);
         orderRepository.save(order);
     }
