@@ -1,8 +1,8 @@
 package com.example.clean_architecture_example.config;
 
-import com.example.clean_architecture_example.application.usecase.AddProductToOrderUseCase;
-import com.example.clean_architecture_example.application.usecase.CreateOrderUseCase;
-import com.example.clean_architecture_example.application.usecase.StartOrderProgressUseCase;
+import com.example.clean_architecture_example.application.usecase.order.AddProductToOrderUseCase;
+import com.example.clean_architecture_example.application.usecase.order.CreateOrderUseCase;
+import com.example.clean_architecture_example.application.usecase.order.StartOrderProgressUseCase;
 import com.example.clean_architecture_example.domain.repository.OrderRepository;
 import com.example.clean_architecture_example.domain.repository.ProductRepository;
 import com.example.clean_architecture_example.infrastructure.presistence.InMemoryOrderRepository;

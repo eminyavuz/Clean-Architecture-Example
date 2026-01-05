@@ -40,12 +40,12 @@ public class Product {
         this.productName=productName;
         this.price= price;
     }
-    public void changePrice(BigDecimal newPrcie)
+    public void changePrice(BigDecimal newPrice)
     {
-        if(newPrcie.compareTo(BigDecimal.ZERO)<0)
+        if( newPrice.compareTo(BigDecimal.ZERO)<0)
         {
             throw new IllegalArgumentException("Price cannot be smaller than zero");
         }
-        this.price=newPrcie;
+        this.price= newPrice;
     }
 }

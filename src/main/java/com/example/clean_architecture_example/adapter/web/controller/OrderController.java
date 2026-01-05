@@ -1,9 +1,9 @@
 package com.example.clean_architecture_example.adapter.web.controller;
 
 import com.example.clean_architecture_example.adapter.web.dto.AddProductRequest;
-import com.example.clean_architecture_example.application.usecase.AddProductToOrderUseCase;
-import com.example.clean_architecture_example.application.usecase.CreateOrderUseCase;
-import com.example.clean_architecture_example.application.usecase.StartOrderProgressUseCase;
+import com.example.clean_architecture_example.application.usecase.order.AddProductToOrderUseCase;
+import com.example.clean_architecture_example.application.usecase.order.CreateOrderUseCase;
+import com.example.clean_architecture_example.application.usecase.order.StartOrderProgressUseCase;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
