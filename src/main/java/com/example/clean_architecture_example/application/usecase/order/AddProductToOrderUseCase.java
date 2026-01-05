@@ -20,7 +20,13 @@ public class AddProductToOrderUseCase {
             throw new IllegalArgumentException("Product is not active");
         product.decreaseStock(quantity);
         productRepository.save(product);
-        order.addProduct(product,quantity);
+        order.addProductSnapshot(
+                product.getId(),
+                product.getProductName(),
+                product.getDescription(),
+                product.getPrice(),
+                quantity
+        );
         orderRepository.save(order);
     }
 }
