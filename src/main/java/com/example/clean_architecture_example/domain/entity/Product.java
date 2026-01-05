@@ -8,10 +8,16 @@ public class Product {
     private String productName;
     private BigDecimal price;
     private String description;
+    private int  stock;
+    private boolean isActive;
+
 
 
     public int getId() {
         return id;
+    }
+    public  boolean isActive(){
+        return this.isActive;
     }
 
     public String getProductName() {
@@ -26,7 +32,7 @@ public class Product {
         return description;
     }
 
-    public Product(int id, String productName, BigDecimal price)
+    public Product(int id, String productName, BigDecimal price,String description, int stock)
     {
         if (productName==null || productName.isBlank())
         {
@@ -36,9 +42,20 @@ public class Product {
         {
             throw new IllegalArgumentException("Price cannot be smaller than zero");
         }
+        if(description==null || description.length()>255)
+        {
+            throw new IllegalArgumentException("Description cannot be empty or more than 255 characters");
+        }
+        if (stock<0 )
+        {
+            throw  new IllegalArgumentException("Stock cannot be negative");
+        }
         this.id= id;
         this.productName=productName;
         this.price= price;
+        this.description= description;
+        this.isActive= true;
+        this.stock= stock;
     }
     public void changePrice(BigDecimal newPrice)
     {
@@ -47,5 +64,22 @@ public class Product {
             throw new IllegalArgumentException("Price cannot be smaller than zero");
         }
         this.price= newPrice;
+    }
+    public void deactivate()
+    {
+        this.isActive=false;
+    }
+
+    public void  decreaseStock(int quantity)
+    {
+        if (quantity<=0)
+        {
+            throw new IllegalArgumentException("Quantity must be positive");
+        }
+        if (stock<quantity)
+        {
+            throw new IllegalArgumentException("not enough stock");
+        }
+        stock-=quantity;
     }
 }

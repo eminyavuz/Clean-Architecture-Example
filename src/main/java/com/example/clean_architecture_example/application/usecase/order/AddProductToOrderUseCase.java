@@ -16,6 +16,10 @@ public class AddProductToOrderUseCase {
     {
         Order order= orderRepository.findById(orderId).orElseThrow(()->new IllegalArgumentException("Order Not Found"));
         Product product=productRepository.findById(productId).orElseThrow(()->new IllegalArgumentException("Product Not Found"));
+        if(!product.isActive())
+            throw new IllegalArgumentException("Product is not active");
+        product.decreaseStock(quantity);
+        productRepository.save(product);
         order.addProduct(product,quantity);
         orderRepository.save(order);
     }
