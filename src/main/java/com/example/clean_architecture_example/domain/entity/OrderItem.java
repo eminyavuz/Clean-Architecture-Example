@@ -25,6 +25,12 @@ public class OrderItem {
          this.unitPrice= product.getPrice();
          this.productName=product.getProductName();
      }
+    public void incraseQuantity(int amount)
+    {
+        if ( amount<=0)
+            throw new IllegalArgumentException("Amout must be positive");
+        this.quantity+=amount;
+    }
      public BigDecimal getTotalPrice(){
          return unitPrice.multiply(BigDecimal.valueOf(quantity));
      }

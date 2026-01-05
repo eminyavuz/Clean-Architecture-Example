@@ -35,6 +35,7 @@ public class Order {
 
         orderItems.add( new OrderItem(product,quantity));
      }
+
      public void startProgress(){
         if (status!=Status.CREATED)
         {
