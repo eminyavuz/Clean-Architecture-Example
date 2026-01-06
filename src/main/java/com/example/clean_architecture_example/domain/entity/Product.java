@@ -82,4 +82,14 @@ public class Product {
         }
         stock-=quantity;
     }
+
+    public void updateStock(int newStock) {
+        if(newStock<0)
+            throw new IllegalArgumentException("Stock cannot be less than zero");
+        stock=newStock;
+    }
+
+    public void activate() {
+        this.isActive=true;
+    }
 }
