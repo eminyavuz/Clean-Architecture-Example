@@ -1,6 +1,6 @@
 package com.example.clean_architecture_example.adapter.web.controller;
 
-import com.example.clean_architecture_example.adapter.web.dto.AddProductRequest;
+import com.example.clean_architecture_example.adapter.web.dto.request.AddProductToOrderRequest;
 import com.example.clean_architecture_example.application.usecase.order.AddProductToOrderUseCase;
 import com.example.clean_architecture_example.application.usecase.order.CreateOrderUseCase;
 import com.example.clean_architecture_example.application.usecase.order.StartOrderProgressUseCase;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
+    // Controller classes act like a dispatcher
     private final CreateOrderUseCase createOrderUseCase;
     private final AddProductToOrderUseCase addProductToOrderUseCase;
     private final StartOrderProgressUseCase startOrderProgressUseCase;
@@ -29,7 +30,7 @@ public class OrderController {
     @PostMapping("/{orderId}/items")
     public ResponseEntity<Void> addProduct(
             @PathVariable int orderId,
-            @Valid @RequestBody AddProductRequest request
+            @Valid @RequestBody AddProductToOrderRequest request
             )
     {
         addProductToOrderUseCase.execute(

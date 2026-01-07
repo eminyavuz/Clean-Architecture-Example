@@ -1,8 +1,10 @@
 package com.example.clean_architecture_example.config;
 
+import com.example.clean_architecture_example.adapter.web.controller.ProductController;
 import com.example.clean_architecture_example.application.usecase.order.AddProductToOrderUseCase;
 import com.example.clean_architecture_example.application.usecase.order.CreateOrderUseCase;
 import com.example.clean_architecture_example.application.usecase.order.StartOrderProgressUseCase;
+import com.example.clean_architecture_example.application.usecase.product.*;
 import com.example.clean_architecture_example.domain.repository.OrderRepository;
 import com.example.clean_architecture_example.domain.repository.ProductRepository;
 import com.example.clean_architecture_example.infrastructure.presistence.InMemoryOrderRepository;
@@ -34,5 +36,35 @@ public class AppConfig {
     @Bean
     public StartOrderProgressUseCase startOrderProgressUseCase(OrderRepository orderRepository) {
         return new StartOrderProgressUseCase(orderRepository);
+    }
+    @Bean
+    public ActivateProductUseCase activateProductUseCase(ProductRepository productRepository)
+    {
+        return new ActivateProductUseCase(productRepository);
+    }
+    @Bean
+    public CreateProductUseCase createProductUseCase(ProductRepository productRepository)
+    {
+        return new CreateProductUseCase(productRepository);
+    }
+    @Bean
+    public DeactivateProductUseCase deactivateProductUseCase(ProductRepository productRepository)
+    {
+        return new DeactivateProductUseCase(productRepository);
+    }
+    @Bean
+    public GetProductUseCase getProductUseCase(ProductRepository productRepository)
+    {
+        return  new GetProductUseCase(productRepository);
+    }
+    @Bean
+    public UpdateProductPriceUseCase updateProductPriceUseCase(ProductRepository productRepository)
+    {
+        return new UpdateProductPriceUseCase(productRepository);
+    }
+    @Bean
+    public UpdateProductStockUseCase updateProductStockUseCase(ProductRepository productRepository)
+    {
+        return new UpdateProductStockUseCase(productRepository);
     }
 }

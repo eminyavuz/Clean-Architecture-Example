@@ -1,6 +1,6 @@
 package com.example.clean_architecture_example.application.usecase.product;
 
-import com.example.clean_architecture_example.adapter.web.dto.ProductResponse;
+import com.example.clean_architecture_example.adapter.web.dto.response.ProductResponse;
 import com.example.clean_architecture_example.domain.entity.Product;
 import com.example.clean_architecture_example.domain.repository.ProductRepository;
 

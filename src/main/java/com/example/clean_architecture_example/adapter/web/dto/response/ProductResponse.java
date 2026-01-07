@@ -1,4 +1,4 @@
-package com.example.clean_architecture_example.adapter.web.dto;
+package com.example.clean_architecture_example.adapter.web.dto.response;
 
 import java.math.BigDecimal;
 
