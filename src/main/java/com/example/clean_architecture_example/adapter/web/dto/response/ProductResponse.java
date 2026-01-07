@@ -7,11 +7,13 @@ public class ProductResponse {
      private String productName;
      private String description;
      private BigDecimal price;
+     private  int stock;
 
-    public ProductResponse(int id, String productName, String description, BigDecimal price) {
+    public ProductResponse(int id, String productName, String description, BigDecimal price, int stock) {
         this.id = id;
         this.productName = productName;
         this.description = description;
         this.price = price;
+        this.stock=stock;
     }
 }

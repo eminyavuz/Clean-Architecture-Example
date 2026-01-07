@@ -11,9 +11,9 @@ public class CreateProductUseCase {
     {
         this.productRepository=productRepository;
     }
-    public int execute(int productId,String productName, BigDecimal price, String description,int stock)
+    public int execute(String productName, BigDecimal price, String description,int stock)
     {
-        Product product= new Product(productId,productName,price,description,stock);
+        Product product= new Product(productName,price,description,stock);
         productRepository.save(product);
         return product.getId();
     }

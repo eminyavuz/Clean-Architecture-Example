@@ -1,8 +1,12 @@
 package com.example.clean_architecture_example.adapter.web.controller;
 
+import com.example.clean_architecture_example.adapter.web.dto.request.CreateProductRequest;
 import com.example.clean_architecture_example.adapter.web.dto.request.UpdateProductPriceRequest;
+import com.example.clean_architecture_example.adapter.web.dto.response.ProductResponse;
 import com.example.clean_architecture_example.application.usecase.product.*;
 import com.example.clean_architecture_example.domain.entity.Product;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,6 +36,20 @@ public class ProductController {
         this.getProductUseCase=getProductUseCase;
         this.updateProductPriceUseCase=updateProductPriceUseCase;
         this.updateProductStockUseCase=updateProductStockUseCase;
+    }
+
+    @PostMapping
+    public ProductResponse create(@RequestBody CreateProductRequest request )
+    {
+        int id= createProductUseCase.execute(
+
+                request.getProductName(),
+                request.getPrice(),
+                request.getDescription(),
+                request.getStock()
+        );
+
+        return getProductUseCase.execute(id);
     }
 
 

@@ -20,6 +20,10 @@ public class Product {
         return this.isActive;
     }
 
+    public int getStock() {
+        return stock;
+    }
+
     public String getProductName() {
         return productName;
     }
@@ -32,7 +36,7 @@ public class Product {
         return description;
     }
 
-    public Product(int id, String productName, BigDecimal price,String description, int stock)
+    public Product( String productName, BigDecimal price,String description, int stock)
     {
         if (productName==null || productName.isBlank())
         {
@@ -50,7 +54,6 @@ public class Product {
         {
             throw  new IllegalArgumentException("Stock cannot be negative");
         }
-        this.id= id;
         this.productName=productName;
         this.price= price;
         this.description= description;
