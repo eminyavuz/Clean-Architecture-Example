@@ -1,6 +1,8 @@
 package com.example.clean_architecture_example.adapter.web.controller;
 
 import com.example.clean_architecture_example.adapter.web.dto.request.CreateProductRequest;
+import com.example.clean_architecture_example.adapter.web.dto.request.UpdateProductPriceRequest;
+import com.example.clean_architecture_example.adapter.web.dto.request.UpdateProductStockRequest;
 import com.example.clean_architecture_example.adapter.web.dto.response.ProductResponse;
 import com.example.clean_architecture_example.application.usecase.product.*;
 import org.springframework.web.bind.annotation.*;
@@ -54,18 +56,18 @@ public class ProductController {
         return getProductUseCase.execute(productId);
     }
 
-    @PutMapping("/{productId}/newPrice")
+    @PutMapping("/{productId}/price")
     public void updateProductPrice(@PathVariable int productId,
-                                   @RequestBody BigDecimal newPrice)
+                                   @RequestBody UpdateProductPriceRequest request)
     {
-       updateProductPriceUseCase.execute(productId,newPrice);
+       updateProductPriceUseCase.execute(productId,request.getNewPrice());
     }
 
-    @PutMapping("/{productId}/newStock")
+    @PutMapping("/{productId}/stock")
     public void setUpdateProductStockUseCase(@PathVariable  int productId,
-                                             @RequestBody int newStock)
+                                             @RequestBody UpdateProductStockRequest request)
     {
-        updateProductStockUseCase.execute(productId,newStock);
+        updateProductStockUseCase.execute(productId,request.getNewStock());
     }
 
     @PutMapping("/{productId}/activate")
