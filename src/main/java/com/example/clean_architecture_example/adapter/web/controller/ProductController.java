@@ -1,10 +1,8 @@
 package com.example.clean_architecture_example.adapter.web.controller;
 
 import com.example.clean_architecture_example.adapter.web.dto.request.CreateProductRequest;
-import com.example.clean_architecture_example.adapter.web.dto.request.UpdateProductPriceRequest;
 import com.example.clean_architecture_example.adapter.web.dto.response.ProductResponse;
 import com.example.clean_architecture_example.application.usecase.product.*;
-import com.example.clean_architecture_example.domain.entity.Product;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -57,13 +55,15 @@ public class ProductController {
     }
 
     @PutMapping("/{productId}/newPrice")
-    public void updateProductPrice(@PathVariable int productId, BigDecimal newPrice)
+    public void updateProductPrice(@PathVariable int productId,
+                                   @RequestBody BigDecimal newPrice)
     {
        updateProductPriceUseCase.execute(productId,newPrice);
     }
 
     @PutMapping("/{productId}/newStock")
-    public void setUpdateProductStockUseCase(@PathVariable  int productId, int newStock)
+    public void setUpdateProductStockUseCase(@PathVariable  int productId,
+                                             @RequestBody int newStock)
     {
         updateProductStockUseCase.execute(productId,newStock);
     }
@@ -74,13 +74,10 @@ public class ProductController {
         activateProductUseCase.execute(productId);
     }
 
-    @PutMapping("/{productId}/activate")
+    @PutMapping("/{productId}/deactivate")
     public  void  deactivateProduct(@PathVariable int productId)
     {
         deactivateProductUseCase.execute(productId);
     }
-
-
-
 
 }
