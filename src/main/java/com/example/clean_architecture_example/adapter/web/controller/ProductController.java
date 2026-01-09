@@ -5,10 +5,9 @@ import com.example.clean_architecture_example.adapter.web.dto.request.UpdateProd
 import com.example.clean_architecture_example.adapter.web.dto.response.ProductResponse;
 import com.example.clean_architecture_example.application.usecase.product.*;
 import com.example.clean_architecture_example.domain.entity.Product;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.math.BigDecimal;
 
 @RestController
 @RequestMapping("/product")
@@ -38,7 +37,7 @@ public class ProductController {
         this.updateProductStockUseCase=updateProductStockUseCase;
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public ProductResponse create(@RequestBody CreateProductRequest request )
     {
         int id= createProductUseCase.execute(
@@ -50,6 +49,35 @@ public class ProductController {
         );
 
         return getProductUseCase.execute(id);
+    }
+    @GetMapping("/{productId}")
+    public ProductResponse getProduct( @PathVariable int productId)
+    {
+        return getProductUseCase.execute(productId);
+    }
+
+    @PutMapping("/{productId}/newPrice")
+    public void updateProductPrice(@PathVariable int productId, BigDecimal newPrice)
+    {
+       updateProductPriceUseCase.execute(productId,newPrice);
+    }
+
+    @PutMapping("/{productId}/newStock")
+    public void setUpdateProductStockUseCase(@PathVariable  int productId, int newStock)
+    {
+        updateProductStockUseCase.execute(productId,newStock);
+    }
+
+    @PutMapping("/{productId}/activate")
+    public  void activateProduct(@PathVariable int productId)
+    {
+        activateProductUseCase.execute(productId);
+    }
+
+    @PutMapping("/{productId}/activate")
+    public  void  deactivateProduct(@PathVariable int productId)
+    {
+        deactivateProductUseCase.execute(productId);
     }
 
 
