@@ -22,7 +22,7 @@ public class OrderController {
         this.createOrderUseCase = createOrderUseCase;
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<Integer> createOrder() {
         int orderId = createOrderUseCase.execute();
         return ResponseEntity.ok(orderId);
