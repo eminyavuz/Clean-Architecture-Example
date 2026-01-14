@@ -1,4 +1,4 @@
-package com.example.clean_architecture_example.infrastructure.presistence.repository;
+package com.example.clean_architecture_example.infrastructure.presistence.inmemory;
 
 import com.example.clean_architecture_example.domain.entity.Product;
 import com.example.clean_architecture_example.domain.repository.ProductRepository;
@@ -12,5 +12,10 @@ public class InMemoryProductRepository implements ProductRepository {
     @Override
     public Optional<Product> findById(int productId) {
         return Optional.ofNullable(storage.get(productId));
+    }
+
+    @Override
+    public void save(Product product) {
+
     }
 }

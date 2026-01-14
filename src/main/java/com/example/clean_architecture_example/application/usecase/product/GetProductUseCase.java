@@ -15,6 +15,6 @@ public class GetProductUseCase {
         Product product= productRepository.findById(productId)
                 .orElseThrow(()->new IllegalArgumentException("Product Cannot be found"));
 
-        return  new ProductResponse(product.getId(),product.getProductName(),product.getDescription(),product.getPrice());
+        return  new ProductResponse(product.getId(),product.getProductName(),product.getDescription(),product.getPrice(),product.getStock());
     }
 }

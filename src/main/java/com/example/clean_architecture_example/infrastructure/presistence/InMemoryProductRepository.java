@@ -13,4 +13,9 @@ public class InMemoryProductRepository implements ProductRepository {
     public Optional<Product> findById(int productId) {
         return Optional.ofNullable(storage.get(productId));
     }
+
+    @Override
+    public void save(Product product) {
+        storage.put(product.getId(),product);
+    }
 }

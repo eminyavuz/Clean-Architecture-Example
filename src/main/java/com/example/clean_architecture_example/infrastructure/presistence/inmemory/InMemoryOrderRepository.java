@@ -1,4 +1,4 @@
-package com.example.clean_architecture_example.infrastructure.presistence.repository;
+package com.example.clean_architecture_example.infrastructure.presistence.inmemory;
 
 import com.example.clean_architecture_example.domain.entity.Order;
 import com.example.clean_architecture_example.domain.repository.OrderRepository;
