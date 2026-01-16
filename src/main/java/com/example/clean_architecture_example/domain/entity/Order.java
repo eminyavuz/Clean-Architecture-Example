@@ -63,6 +63,14 @@ public class Order {
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     // with copyOf usage we isolate our data from other layers
     public List<OrderItem> getOrderItems() {
         return List.copyOf(orderItems);

@@ -9,7 +9,8 @@ public class OrderItem {
      private final BigDecimal unitPrice;
      private int quantity;
 
-    private OrderItem(int productId,
+
+    public OrderItem(int productId,
              String productName,
              String description,
              BigDecimal unitPrice
