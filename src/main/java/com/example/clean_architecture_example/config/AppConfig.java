@@ -10,11 +10,16 @@ import com.example.clean_architecture_example.domain.repository.ProductRepositor
 import com.example.clean_architecture_example.infrastructure.presistence.jpa.adapter.JpaOrderItemAdapter;
 import com.example.clean_architecture_example.infrastructure.presistence.jpa.adapter.JpaOrderRepositoryAdapter;
 import com.example.clean_architecture_example.infrastructure.presistence.jpa.adapter.JpaProductRepositoryAdapter;
+import com.example.clean_architecture_example.infrastructure.presistence.mapper.OrderItemMapper;
+import com.example.clean_architecture_example.infrastructure.presistence.mapper.OrderMapper;
+import com.example.clean_architecture_example.infrastructure.presistence.mapper.ProductMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AppConfig {
+
+    // Use case Definitions
     @Bean
     public CreateOrderUseCase createOrderUseCase(OrderRepository orderRepository) {
         return new CreateOrderUseCase(orderRepository);
@@ -60,6 +65,7 @@ public class AppConfig {
         return new UpdateProductStockUseCase(productRepository);
     }
 
+    // Repository Definitions
     @Bean
     ProductRepository productRepository(JpaProductRepositoryAdapter adapter) {
         return adapter;

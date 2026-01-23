@@ -1,6 +1,8 @@
 package com.example.clean_architecture_example.infrastructure.presistence.mapper;
 
+import com.example.clean_architecture_example.adapter.web.dto.response.OrderResponse;
 import com.example.clean_architecture_example.domain.entity.Order;
+import com.example.clean_architecture_example.domain.repository.OrderRepository;
 import com.example.clean_architecture_example.infrastructure.presistence.entity.OrderItemJpaEntity;
 import com.example.clean_architecture_example.infrastructure.presistence.entity.OrderJpaEntity;
 
@@ -17,7 +19,11 @@ public class OrderMapper {
                 });
         return jpaEntity;
     }
-
+public static OrderResponse toResponse(OrderJpaEntity order)
+{
+    OrderResponse response = new OrderResponse();
+    return  response;
+}
     public static Order toDomain(OrderJpaEntity entity)
     {
         Order order= new Order();
