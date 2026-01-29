@@ -2,9 +2,13 @@ package com.example.clean_architecture_example.application.usecase.product;
 
 import com.example.clean_architecture_example.domain.entity.Product;
 import com.example.clean_architecture_example.domain.repository.ProductRepository;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
+@Service
+@Transactional
 public class UpdateProductPriceUseCase {
     private  final ProductRepository productRepository;
     public UpdateProductPriceUseCase(ProductRepository productRepository)

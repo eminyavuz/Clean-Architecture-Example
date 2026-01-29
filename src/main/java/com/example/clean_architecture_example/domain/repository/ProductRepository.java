@@ -6,6 +6,6 @@ import com.example.clean_architecture_example.domain.entity.Product;
 import java.util.Optional;
 
 public interface ProductRepository {
-    Optional<ProductResponse> findById(int productId);
+    Optional<Product> findById(int productId);
      void save(Product product);
 }

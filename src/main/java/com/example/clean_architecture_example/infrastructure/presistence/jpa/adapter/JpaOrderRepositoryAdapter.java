@@ -28,8 +28,8 @@ public class JpaOrderRepositoryAdapter implements OrderRepository {
     }
 
     @Override
-    public Optional<OrderResponse> findById(int id) {
+    public Optional<Order> findById(int id) {
 return jpaRepository.findById(id)
-        .map(OrderMapper::toResponse);
+        .map(OrderMapper::toDomain);
     }
 }

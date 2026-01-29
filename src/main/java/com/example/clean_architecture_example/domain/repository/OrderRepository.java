@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface OrderRepository {
     void save(Order order);
-     Optional<OrderResponse> findById(int id);
+     Optional<Order> findById(int id);
 }

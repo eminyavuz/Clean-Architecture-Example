@@ -3,7 +3,11 @@ import com.example.clean_architecture_example.domain.entity.Order;
 import com.example.clean_architecture_example.domain.entity.Product;
 import com.example.clean_architecture_example.domain.repository.OrderRepository;
 import com.example.clean_architecture_example.domain.repository.ProductRepository;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+@Service
+@Transactional
 public class AddProductToOrderUseCase {
     private final OrderRepository orderRepository;
     private final ProductRepository productRepository;
@@ -15,7 +19,7 @@ public class AddProductToOrderUseCase {
     public  void execute(int orderId, int productId,int quantity)
     {
         Order order= orderRepository.findById(orderId).orElseThrow(()->new IllegalArgumentException("Order Not Found"));
-        Product product=productRepository.findById(productId).orElseThrow(()->new IllegalArgumentException("Product Not Found"));
+        Product product= productRepository.findById(productId).orElseThrow(()->new IllegalArgumentException("Product Not Found"));
         if(!product.isActive())
             throw new IllegalArgumentException("Product is not active");
         product.decreaseStock(quantity);

@@ -1,9 +1,9 @@
 package com.example.clean_architecture_example.infrastructure.presistence.jpa.adapter;
 
 import com.example.clean_architecture_example.adapter.web.dto.response.ProductResponse;
-import com.example.clean_architecture_example.adapter.web.mapper.ProductMapper;
 import com.example.clean_architecture_example.domain.entity.Product;
 import com.example.clean_architecture_example.domain.repository.ProductRepository;
+import com.example.clean_architecture_example.infrastructure.presistence.mapper.ProductMapper;
 import com.example.clean_architecture_example.infrastructure.presistence.repository.ProductJpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -21,9 +21,9 @@ public class JpaProductRepositoryAdapter implements ProductRepository {
     }
 
     @Override
-    public Optional<ProductResponse> findById(int productId) {
+    public Optional<Product> findById(int productId) {
 
-        return jpaRepository.findById(productId).map(ProductMapper::toResponse) ;
+        return jpaRepository.findById(productId).map(ProductMapper::toDomain) ;
     }
 
     @Override
