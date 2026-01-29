@@ -10,9 +10,6 @@ import com.example.clean_architecture_example.domain.repository.ProductRepositor
 import com.example.clean_architecture_example.infrastructure.presistence.jpa.adapter.JpaOrderItemAdapter;
 import com.example.clean_architecture_example.infrastructure.presistence.jpa.adapter.JpaOrderRepositoryAdapter;
 import com.example.clean_architecture_example.infrastructure.presistence.jpa.adapter.JpaProductRepositoryAdapter;
-import com.example.clean_architecture_example.infrastructure.presistence.mapper.OrderItemMapper;
-import com.example.clean_architecture_example.infrastructure.presistence.mapper.OrderMapper;
-import com.example.clean_architecture_example.infrastructure.presistence.mapper.ProductMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -80,5 +77,4 @@ public class AppConfig {
     OrderItemRepository orderItemRepository(JpaOrderItemAdapter adapter) {
         return adapter;
     }
-
 }
