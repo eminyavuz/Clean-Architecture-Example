@@ -1,5 +1,6 @@
 package com.example.clean_architecture_example.infrastructure.presistence.mapper;
 
+import com.example.clean_architecture_example.adapter.web.dto.response.OrderItemResponse;
 import com.example.clean_architecture_example.domain.entity.OrderItem;
 import com.example.clean_architecture_example.infrastructure.presistence.entity.OrderItemJpaEntity;
 
@@ -15,6 +16,17 @@ public class OrderItemMapper {
 
         return  jpaEntity;
     }
+    public static OrderItemResponse toResponse(OrderItemJpaEntity item)
+    {
+        OrderItemResponse response= new OrderItemResponse();
+        response.setProductId(item.getId());
+        response.setUnitPrice(item.getPrice());
+        response.setDescription(item.getDescription());
+        response.setQuantity(item.getQuantity());
+        response.setProductName(item.getProductName());
+          return  response;
+    }
+
     public  static  OrderItem toDomain(OrderItemJpaEntity entity)
     {
        return  new OrderItem(

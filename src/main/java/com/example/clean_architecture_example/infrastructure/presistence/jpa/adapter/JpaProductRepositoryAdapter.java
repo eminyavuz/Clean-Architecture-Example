@@ -29,5 +29,6 @@ public class JpaProductRepositoryAdapter implements ProductRepository {
     @Override
     public void save(Product product) {
 
+         jpaRepository.save(ProductMapper.toJpa(product));
     }
 }

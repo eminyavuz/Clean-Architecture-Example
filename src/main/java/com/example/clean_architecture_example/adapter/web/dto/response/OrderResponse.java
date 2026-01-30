@@ -20,4 +20,17 @@ public class OrderResponse {
     public Status getStatus() {
         return status;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
+    public void setOrderItemResponses(List<OrderItemResponse> orderItemResponses) {
+        this.orderItemResponses = orderItemResponses;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 }

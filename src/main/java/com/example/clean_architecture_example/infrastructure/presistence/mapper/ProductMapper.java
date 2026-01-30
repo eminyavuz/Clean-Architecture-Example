@@ -19,6 +19,6 @@ public class ProductMapper {
 
     public static Product toDomain(ProductJpaEntity entity)
     {
-        return new Product(entity.getName(),entity.getPrice(),entity.getDescription(),entity.getStock());
+        return new Product(entity.getName(),entity.getPrice(),entity.getDescription(),entity.getStock(),entity.isActive());
     }
 }
