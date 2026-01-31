@@ -1,13 +1,11 @@
 package com.example.clean_architecture_example.application.usecase.order;
+
 import com.example.clean_architecture_example.domain.entity.Order;
 import com.example.clean_architecture_example.domain.entity.Product;
 import com.example.clean_architecture_example.domain.repository.OrderRepository;
 import com.example.clean_architecture_example.domain.repository.ProductRepository;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-@Service
-@Transactional
+
 public class AddProductToOrderUseCase {
     private final OrderRepository orderRepository;
     private final ProductRepository productRepository;

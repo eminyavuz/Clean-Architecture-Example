@@ -1,9 +1,6 @@
 package com.example.clean_architecture_example.domain.entity;
 
-import com.example.clean_architecture_example.enums.Status;
-
 import java.math.BigDecimal;
-import java.math.BigInteger;
 
 public class Product {
     private int  id;
@@ -56,11 +53,8 @@ public class Product {
         {
             throw  new IllegalArgumentException("Stock cannot be negative");
         }
-        if(isActive!=null)
-        {
-            this.isActive=isActive;
-        }
-        
+
+        this.isActive = isActive != null ? isActive : true;
         this.productName=productName;
         this.price= price;
         this.description= description;

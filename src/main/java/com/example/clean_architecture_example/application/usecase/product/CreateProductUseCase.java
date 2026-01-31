@@ -7,17 +7,16 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
-@Service
-@Transactional
+
 public class CreateProductUseCase {
     private final ProductRepository productRepository;
     public CreateProductUseCase(ProductRepository productRepository)
     {
         this.productRepository=productRepository;
     }
-    public int execute(String productName, BigDecimal price, String description,int stock)
+    public int execute(String productName, BigDecimal price, String description,int stock,boolean isActive)
     {
-        Product product= new Product(productName,price,description,stock);
+        Product product= new Product(productName,price,description,stock,isActive);
         productRepository.save(product);
         return product.getId();
     }

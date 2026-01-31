@@ -1,9 +1,8 @@
 package com.example.clean_architecture_example.infrastructure.presistence.entity;
 
-import com.example.clean_architecture_example.enums.Status;
+import com.example.clean_architecture_example.domain.entity.enums.Status;
 import jakarta.persistence.*;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -8,6 +8,7 @@ import com.example.clean_architecture_example.infrastructure.presistence.mapper.
 import com.example.clean_architecture_example.infrastructure.presistence.repository.OrderItemJpaRepository;
 import com.example.clean_architecture_example.infrastructure.presistence.repository.OrderJpaRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -20,6 +21,7 @@ public class JpaOrderRepositoryAdapter implements OrderRepository {
 
     }
 
+    @Transactional
     @Override
     public void save(Order order) {
         OrderJpaEntity entity= OrderMapper.toJpa(order);

@@ -1,4 +1,4 @@
-package com.example.clean_architecture_example.enums;
+package com.example.clean_architecture_example.domain.entity.enums;
 
 public enum Status {
     CREATED,

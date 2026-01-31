@@ -1,6 +1,6 @@
 package com.example.clean_architecture_example.domain.entity;
 
-import com.example.clean_architecture_example.enums.Status;
+import com.example.clean_architecture_example.domain.entity.enums.Status;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -65,10 +65,6 @@ public class Order {
 
     public Status getStatus() {
         return status;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     // with copyOf usage we isolate our data from other layers

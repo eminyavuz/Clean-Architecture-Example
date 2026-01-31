@@ -1,6 +1,6 @@
 package com.example.clean_architecture_example.adapter.web.dto.response;
 
-import com.example.clean_architecture_example.enums.Status;
+import com.example.clean_architecture_example.domain.entity.enums.Status;
 
 import java.util.List;
 

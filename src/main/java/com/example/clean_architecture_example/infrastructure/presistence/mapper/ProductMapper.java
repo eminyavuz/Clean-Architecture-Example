@@ -14,11 +14,13 @@ public class ProductMapper {
         jpa.setActive(product.isActive());
         jpa.setPrice(product.getPrice());
         jpa.setDescription(product.getDescription());
+        jpa.setStock(product.getStock());
         return  jpa;
     }
 
     public static Product toDomain(ProductJpaEntity entity)
     {
+        // domaine id içerisinde bulunan bir ctor gerekebilir.
         return new Product(entity.getName(),entity.getPrice(),entity.getDescription(),entity.getStock(),entity.isActive());
     }
 }

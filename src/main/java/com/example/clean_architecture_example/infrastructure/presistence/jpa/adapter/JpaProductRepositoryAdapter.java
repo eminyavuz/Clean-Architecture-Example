@@ -6,6 +6,7 @@ import com.example.clean_architecture_example.domain.repository.ProductRepositor
 import com.example.clean_architecture_example.infrastructure.presistence.mapper.ProductMapper;
 import com.example.clean_architecture_example.infrastructure.presistence.repository.ProductJpaRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -26,6 +27,7 @@ public class JpaProductRepositoryAdapter implements ProductRepository {
         return jpaRepository.findById(productId).map(ProductMapper::toDomain) ;
     }
 
+    @Transactional
     @Override
     public void save(Product product) {
 
