@@ -1,6 +1,5 @@
 package com.example.clean_architecture_example.infrastructure.presistence.jpa.adapter;
 
-import com.example.clean_architecture_example.adapter.web.dto.response.ProductResponse;
 import com.example.clean_architecture_example.domain.entity.Product;
 import com.example.clean_architecture_example.domain.repository.ProductRepository;
 import com.example.clean_architecture_example.infrastructure.presistence.mapper.ProductMapper;

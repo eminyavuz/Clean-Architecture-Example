@@ -39,8 +39,7 @@ public static OrderResponse toResponse(OrderJpaEntity order)
 }
     public static Order toDomain(OrderJpaEntity entity)
     {
-        Order order= new Order();
-        order.setId(entity.getId());
+        Order order= new Order( entity.getId());
         entity.getItems().forEach(i->
                 order.addProductSnapshot(
                         i.getId(),

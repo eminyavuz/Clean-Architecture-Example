@@ -18,6 +18,16 @@ public class CreateProductRequest {
     private BigDecimal price;
     @Positive
     private int stock;
+    private boolean isActive;
+   
+   
+   
+    public boolean getIsActive() {
+        return isActive;
+    }
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
+    }
 
     public int getStock() {
         return stock;

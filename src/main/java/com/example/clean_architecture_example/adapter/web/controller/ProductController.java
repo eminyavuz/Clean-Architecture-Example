@@ -45,7 +45,8 @@ public class ProductController {
                 request.getProductName(),
                 request.getPrice(),
                 request.getDescription(),
-                request.getStock()
+                request.getStock(),
+                request.getIsActive()
         );
 
         return getProductUseCase.execute(id);

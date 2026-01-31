@@ -24,6 +24,15 @@ public class Order {
         this.status= Status.CREATED;
     }
 
+    public Order(int id) {
+     if (id<=0){
+        throw new IllegalArgumentException("Id must be greater than zero");
+     }
+        this.createdDate = LocalDateTime.now();
+        this.orderItems = new ArrayList<>();
+        this.status= Status.CREATED;
+    }
+
     // Behaviors - we add behaviors to protect the entity from invalid operations
      public void addProductSnapshot(int productId,String productName,String description,BigDecimal unitPrice, int  quantity)
      {
