@@ -4,10 +4,12 @@ import com.example.clean_architecture_example.adapter.web.dto.request.CreateProd
 import com.example.clean_architecture_example.adapter.web.dto.request.UpdateProductPriceRequest;
 import com.example.clean_architecture_example.adapter.web.dto.request.UpdateProductStockRequest;
 import com.example.clean_architecture_example.adapter.web.dto.response.ProductResponse;
+import com.example.clean_architecture_example.adapter.web.mapper.ProductWebMapper;
 import com.example.clean_architecture_example.application.usecase.product.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @RestController
 @RequestMapping("/products")
@@ -16,6 +18,7 @@ public class ProductController {
     private final CreateProductUseCase createProductUseCase;
     private final DeactivateProductUseCase deactivateProductUseCase;
     private final GetProductUseCase getProductUseCase;
+    private final ListProductsUseCase listProductsUseCase;
     private final UpdateProductStockUseCase updateProductStockUseCase;
     private final UpdateProductPriceUseCase updateProductPriceUseCase;
 
@@ -25,6 +28,7 @@ public class ProductController {
             CreateProductUseCase createProductUseCase,
             DeactivateProductUseCase deactivateProductUseCase,
             GetProductUseCase getProductUseCase,
+            ListProductsUseCase listProductsUseCase,
             UpdateProductStockUseCase updateProductStockUseCase,
             UpdateProductPriceUseCase updateProductPriceUseCase
             )
@@ -33,8 +37,16 @@ public class ProductController {
         this.deactivateProductUseCase= deactivateProductUseCase;
         this.createProductUseCase=createProductUseCase;
         this.getProductUseCase=getProductUseCase;
+        this.listProductsUseCase = listProductsUseCase;
         this.updateProductPriceUseCase=updateProductPriceUseCase;
         this.updateProductStockUseCase=updateProductStockUseCase;
+    }
+
+    @GetMapping
+    public List<ProductResponse> listProducts() {
+        return listProductsUseCase.execute().stream()
+                .map(ProductWebMapper::toResponse)
+                .toList();
     }
 
     @PostMapping("/create")
@@ -49,12 +61,12 @@ public class ProductController {
                 request.getIsActive()
         );
 
-        return getProductUseCase.execute(id);
+        return ProductWebMapper.toResponse(getProductUseCase.execute(id));
     }
     @GetMapping("/{productId}")
     public ProductResponse getProduct( @PathVariable int productId)
     {
-        return getProductUseCase.execute(productId);
+        return ProductWebMapper.toResponse(getProductUseCase.execute(productId));
     }
 
     @PutMapping("/{productId}/price")
@@ -65,8 +77,8 @@ public class ProductController {
     }
 
     @PutMapping("/{productId}/stock")
-    public void setUpdateProductStockUseCase(@PathVariable  int productId,
-                                             @RequestBody UpdateProductStockRequest request)
+    public void updateProductStock(@PathVariable int productId,
+                                   @RequestBody UpdateProductStockRequest request)
     {
         updateProductStockUseCase.execute(productId,request.getNewStock());
     }

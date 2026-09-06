@@ -5,9 +5,10 @@ import java.math.BigDecimal;
 public class OrderItemResponse {
     private  int productId;
     private String productName;
-    private  String Description;
+    private  String description;
     private BigDecimal unitPrice;
     private int quantity;
+    private BigDecimal lineTotal;
 
     public int getProductId() {
         return productId;
@@ -18,7 +19,7 @@ public class OrderItemResponse {
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public BigDecimal getUnitPrice() {
@@ -38,7 +39,7 @@ public class OrderItemResponse {
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     public void setUnitPrice(BigDecimal unitPrice) {
@@ -49,5 +50,11 @@ public class OrderItemResponse {
         this.quantity = quantity;
     }
 
+    public BigDecimal getLineTotal() {
+        return lineTotal;
+    }
 
+    public void setLineTotal(BigDecimal lineTotal) {
+        this.lineTotal = lineTotal;
+    }
 }

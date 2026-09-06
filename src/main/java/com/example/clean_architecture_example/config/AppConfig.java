@@ -2,14 +2,16 @@ package com.example.clean_architecture_example.config;
 
 import com.example.clean_architecture_example.application.usecase.order.AddProductToOrderUseCase;
 import com.example.clean_architecture_example.application.usecase.order.CreateOrderUseCase;
+import com.example.clean_architecture_example.application.usecase.order.GetOrderUseCase;
+import com.example.clean_architecture_example.application.usecase.order.ListOrdersUseCase;
 import com.example.clean_architecture_example.application.usecase.order.StartOrderProgressUseCase;
 import com.example.clean_architecture_example.application.usecase.product.*;
 import com.example.clean_architecture_example.domain.repository.OrderItemRepository;
 import com.example.clean_architecture_example.domain.repository.OrderRepository;
 import com.example.clean_architecture_example.domain.repository.ProductRepository;
-import com.example.clean_architecture_example.infrastructure.presistence.jpa.adapter.JpaOrderItemAdapter;
-import com.example.clean_architecture_example.infrastructure.presistence.jpa.adapter.JpaOrderRepositoryAdapter;
-import com.example.clean_architecture_example.infrastructure.presistence.jpa.adapter.JpaProductRepositoryAdapter;
+import com.example.clean_architecture_example.infrastructure.persistence.jpa.adapter.JpaOrderItemAdapter;
+import com.example.clean_architecture_example.infrastructure.persistence.jpa.adapter.JpaOrderRepositoryAdapter;
+import com.example.clean_architecture_example.infrastructure.persistence.jpa.adapter.JpaProductRepositoryAdapter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -33,6 +35,16 @@ public class AppConfig {
     }
 
     @Bean
+    public GetOrderUseCase getOrderUseCase(OrderRepository orderRepository) {
+        return new GetOrderUseCase(orderRepository);
+    }
+
+    @Bean
+    public ListOrdersUseCase listOrdersUseCase(OrderRepository orderRepository) {
+        return new ListOrdersUseCase(orderRepository);
+    }
+
+    @Bean
     public ActivateProductUseCase activateProductUseCase(ProductRepository productRepository) {
         return new ActivateProductUseCase(productRepository);
     }
@@ -50,6 +62,11 @@ public class AppConfig {
     @Bean
     public GetProductUseCase getProductUseCase(ProductRepository productRepository) {
         return new GetProductUseCase(productRepository);
+    }
+
+    @Bean
+    public ListProductsUseCase listProductsUseCase(ProductRepository productRepository) {
+        return new ListProductsUseCase(productRepository);
     }
 
     @Bean

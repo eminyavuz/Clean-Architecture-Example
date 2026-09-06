@@ -9,4 +9,8 @@ public class UpdateProductStockRequest {
     public int getNewStock() {
         return newStock;
     }
+
+    public void setNewStock(int newStock) {
+        this.newStock = newStock;
+    }
 }

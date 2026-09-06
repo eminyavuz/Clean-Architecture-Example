@@ -13,7 +13,7 @@ public class ActivateProductUseCase {
     public void execute(int productId)
     {
         Product product= productRepository.findById(productId)
-                .orElseThrow(()-> new IllegalArgumentException("Product cannot found"));
+                .orElseThrow(()-> new IllegalArgumentException("Product not found"));
     product.activate();
     productRepository.save(product);
     }

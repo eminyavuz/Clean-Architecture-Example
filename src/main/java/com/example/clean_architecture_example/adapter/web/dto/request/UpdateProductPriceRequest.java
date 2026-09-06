@@ -13,4 +13,8 @@ public class UpdateProductPriceRequest {
     public BigDecimal getNewPrice() {
         return newPrice;
     }
+
+    public void setNewPrice(BigDecimal newPrice) {
+        this.newPrice = newPrice;
+    }
 }

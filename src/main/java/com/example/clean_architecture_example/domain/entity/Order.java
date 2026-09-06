@@ -25,12 +25,30 @@ public class Order {
     }
 
     public Order(int id) {
-     if (id<=0){
-        throw new IllegalArgumentException("Id must be greater than zero");
-     }
+        if (id <= 0) {
+            throw new IllegalArgumentException("Id must be greater than zero");
+        }
+        this.id = id;
         this.createdDate = LocalDateTime.now();
         this.orderItems = new ArrayList<>();
-        this.status= Status.CREATED;
+        this.status = Status.CREATED;
+    }
+
+    public static Order reconstitute(int id, Status status, List<OrderItem> items) {
+        Order order = new Order();
+        order.id = id;
+        order.status = status;
+        order.orderItems.addAll(items);
+        return order;
+    }
+
+    public void assignId(int id) {
+        if (id <= 0) {
+            throw new IllegalArgumentException("Id must be greater than zero");
+        }
+        if (this.id == 0) {
+            this.id = id;
+        }
     }
 
     // Behaviors - we add behaviors to protect the entity from invalid operations
@@ -44,7 +62,7 @@ public class Order {
              throw new IllegalStateException("Cannot add product to cancelled or shipped order ");
          }
          if(existing.isPresent())
-             existing.get().incraseQuantity(quantity);
+             existing.get().increaseQuantity(quantity);
          else
              orderItems.add( OrderItem.Create(productId,productName,description,unitPrice,quantity));
      }

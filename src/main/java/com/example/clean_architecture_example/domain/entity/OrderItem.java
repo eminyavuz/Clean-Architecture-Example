@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public class OrderItem {
      private final int productId;
      private final String productName;
-     private final String Description;
+     private final String description;
      private final BigDecimal unitPrice;
      private int quantity;
 
@@ -21,7 +21,7 @@ public class OrderItem {
              throw new IllegalArgumentException("Quantity must be bigger than zero");
          }
          this.productId=productId;
-         this.Description=description;
+         this.description=description;
          this.quantity=quantity;
          this.unitPrice= unitPrice;
          this.productName=productName;
@@ -37,7 +37,7 @@ public static OrderItem Create(
     return new OrderItem(productId, productName, description, unitPrice,quantity);
 }
 
-    public void incraseQuantity(int amount)
+    public void increaseQuantity(int amount)
     {
         if ( amount<=0)
             throw new IllegalArgumentException("Amount must be positive");
@@ -57,7 +57,7 @@ public static OrderItem Create(
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public BigDecimal getUnitPrice() {
