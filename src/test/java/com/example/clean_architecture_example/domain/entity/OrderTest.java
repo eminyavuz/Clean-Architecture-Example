@@ -28,7 +28,7 @@ public class OrderTest {
         Order order= new Order();
         order.addProductSnapshot(1, "Mouse", "Kablosuz Mouse", new BigDecimal("50.00"), 2);
          assertEquals(1,order.getOrderItems().size());
-         assertEquals(new BigDecimal("100"),order.getTotalPrice());
+         assertEquals(new BigDecimal("100.00"),order.getTotalPrice());
     }
     @Test
     @DisplayName("Should incrase the quantity when same product added")
@@ -39,7 +39,7 @@ public class OrderTest {
         order.addProductSnapshot(1, "Mouse", "Kablosuz Mouse", new BigDecimal("50.00"), 3);
         assertEquals(1,order.getOrderItems().size());
         assertEquals(5,order.getOrderItems().get(0).getQuantity());
-        assertEquals(new BigDecimal("250"),order.getTotalPrice());
+        assertEquals(new BigDecimal("250.00"),order.getTotalPrice());
     }
 
     @Test

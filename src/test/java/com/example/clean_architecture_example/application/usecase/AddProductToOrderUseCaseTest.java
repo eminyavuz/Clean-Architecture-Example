@@ -70,7 +70,7 @@ public class AddProductToOrderUseCaseTest {
         Product inactiveProduct= Product.reconstitute(10,"Mouse",new BigDecimal("150"),"Description",4,false);
 
         when(orderRepository.findById(1)).thenReturn(Optional.of(order));
-    when(productRepository.findById(110)).thenReturn(Optional.of(inactiveProduct));
+    when(productRepository.findById(10)).thenReturn(Optional.of(inactiveProduct));
 
     assertThrows(ProductNotActiveException.class,()->useCase.execute(1,10,1));
 
@@ -80,4 +80,4 @@ public class AddProductToOrderUseCaseTest {
 
 
 
-}
+}}

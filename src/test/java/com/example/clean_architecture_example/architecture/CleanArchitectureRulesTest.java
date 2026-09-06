@@ -13,7 +13,7 @@ public class CleanArchitectureRulesTest {
     @ArchTest
     static final ArchRule domain_should_not_depend_on_outer_layers=
             noClasses()
-                    .that().resideInAnyPackage("...domain...")
+                    .that().resideInAnyPackage("..domain..")
                     .should().dependOnClassesThat()
                     .resideInAnyPackage("..application..","..adapter..","..infrastructure..","..config..");
 
