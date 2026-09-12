@@ -22,7 +22,7 @@ public class CleanArchitectureRulesTest {
             noClasses()
                     .that().resideInAnyPackage("..application..")
                     .should().dependOnClassesThat()
-                    .resideInAnyPackage("..adapter..","..infrastructure");
+                    .resideInAnyPackage("..adapter..", "..infrastructure..");
 
     @ArchTest
     static final  ArchRule domain_should_be_framework_independent=
