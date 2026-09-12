@@ -24,7 +24,8 @@ The core goal of this project is to keep **business domain rules pure, framework
 ## 🧱 Layered Architecture Diagram
 
 ```mermaid
-    subgraph Outer ["Outermost Layers (Infrastructure & Adapters)"]
+    flowchart TD
+        subgraph Outer ["Outermost Layers (Infrastructure & Adapters)"]
         WebController["Adapter: Web Controllers<br/>(ProductController, OrderController)"]
         JPAAdapter["Infrastructure: Persistence Adapters<br/>(JpaProductRepositoryAdapter, InMemoryProductRepository)"]
         DB[(External Persistence Mechanism<br/>MySQL / PostgreSQL / InMemory)]
