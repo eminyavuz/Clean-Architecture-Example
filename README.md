@@ -127,7 +127,7 @@ The repository includes unit tests across domain and application layers, plus au
 | **[OrderTest](src/test/java/com/example/clean_architecture_example/domain/entity/OrderTest.java)** | Domain | Validates order status transitions, snapshot calculation, reconstitute logic |
 | **[OrderItemTest](src/test/java/com/example/clean_architecture_example/domain/entity/OrderItemTest.java)** | Domain | Validates snapshot item quantity and total price calculation |
 | **[AddProductToOrderUseCaseTest](src/test/java/com/example/clean_architecture_example/application/usecase/AddProductToOrderUseCaseTest.java)** | Application | Validates stock deduction, order update, and exception handling |
-| **UseCase Test Templates** | Application | Unit test stubs for all 11 product and order application flows |
+| **[UseCase Test Suite](src/test/java/com/example/clean_architecture_example/application/usecase)** | Application | Unit tests covering all 12 product and order application flows |
 
 ### Running the Tests
 
